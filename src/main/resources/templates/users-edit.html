@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<div layout:fragment="body" class="py-5" style="padding: 50px">
+    <div class="title">
+        <h4 style="margin-bottom: 50px;">Update User</h4>
+    </div>
+    <form role="form" method="post" th:action="@{/users/{userID}/edit(userID=${user.userID})}" th:object="${user}">
+    <input type="hidden" th:field="*{userID}">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" th:field="*{firstName}">
+                <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" th:field="*{lastName}">
+                <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username" th:field="*{username}">
+                <p th:if="${#fields.hasErrors('username')}" class="text-danger" th:errors="*{username}"></p>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label for="userEmail">Email</label>
+                <input type="email" class="form-control" id="userEmail" placeholder="Email" name="userEmail" th:field="*{userEmail}">
+                <p th:if="${#fields.hasErrors('userEmail')}" class="text-danger" th:errors="*{userEmail}"></p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="userPhone">Phone Number</label>
+                <input type="text" class="form-control" id="userPhone" placeholder="User Phone" name="userPhone" th:field="*{userPhone}">
+                <p th:if="${#fields.hasErrors('userPhone')}" class="text-danger" th:errors="*{userPhone}"></p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="roleID">Role ID</label>
+                <input type="number" class="form-control" id="roleID" placeholder="Role ID" name="roleID" th:field="*{roleID}">
+                <p th:if="${#fields.hasErrors('roleID')}" class="text-danger" th:errors="*{roleID}"></p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" placeholder="Password" name="password" th:field="*{password}">
+                <p th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary my-4">Edit User</button>
+    </form>
+</div>
+</body>
+</html>
